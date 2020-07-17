@@ -3,28 +3,33 @@
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
     <RootNamespace>Be.Stateless.BizTalk</RootNamespace>
-    <AssemblyName>Be.Stateless.BizTalk.Transform.ExtensionObjects.Tests</AssemblyName>
-    <Description>Unit tests for BizTalk Factory's XSLT extension objects for general purpose BizTalk Server development.</Description>
+    <AssemblyName>Be.Stateless.BizTalk.Transform.Unit.Tests</AssemblyName>
+    <Description>Unit tests for BizTalk Factory's transform unit test helpers for general purpose BizTalk Server development.</Description>
     <IsPublishable>false</IsPublishable>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Remove="Dummies\Transform\BoolTransform.xslt" />
-    <None Remove="Resources\Message\Bool.xml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="Dummies\Transform\BoolTransform.xslt" />
-    <EmbeddedResource Include="Resources\Message\Bool.xml" />
-  </ItemGroup>
 
   <ItemGroup>
     <None Include="..\..\.settings\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Be.Stateless.Stream" Version="2.1.22025.21947" />
+    <None Remove="Dummies\Transform\TextTransform.xslt" />
+    <None Remove="Resources\Message\Sample.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Dummies\Transform\TextTransform.xslt" />
+    <EmbeddedResource Include="Resources\Message\Sample.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Be.Stateless.BizTalk.Messaging" Version="2.1.22025.26745" />
+    <PackageReference Include="Be.Stateless.BizTalk.Messaging.Unit" Version="2.1.22025.26745" />
     <PackageReference Include="BizTalk.Server.2020.Runtime" Version="1.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="BizTalk.Server.2020.Utilities" Version="1.0.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -40,10 +45,10 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Xunit.SkippableFact" Version="1.4.13" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Be.Stateless.BizTalk.Transform.ExtensionObjects\Be.Stateless.BizTalk.Transform.ExtensionObjects.csproj" />
     <ProjectReference Include="..\Be.Stateless.BizTalk.Transform.Unit\Be.Stateless.BizTalk.Transform.Unit.csproj" />
   </ItemGroup>
 

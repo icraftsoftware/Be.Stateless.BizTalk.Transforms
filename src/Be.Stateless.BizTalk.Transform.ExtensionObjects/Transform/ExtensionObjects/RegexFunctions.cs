@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -43,7 +43,6 @@ namespace Be.Stateless.BizTalk.Transform.ExtensionObjects
 		/// <c>true</c> if the regular expression finds a match; <c>false</c> otherwise.
 		/// </returns>
 		/// <seealso cref="Regex.IsMatch(string,string)"/>
-		[SuppressMessage("Performance", "CA1822:Mark members as static")]
 		public bool IsMatch(string input, string pattern)
 		{
 			return Regex.IsMatch(input, pattern);
@@ -62,7 +61,6 @@ namespace Be.Stateless.BizTalk.Transform.ExtensionObjects
 		/// <c>true</c> if the regular expression finds a match; <c>false</c> otherwise.
 		/// </returns>
 		/// <seealso cref="Regex.IsMatch(string,string)"/>
-		[SuppressMessage("Performance", "CA1822:Mark members as static")]
 		public bool IsOneOf(string input, string pattern)
 		{
 			return Regex.IsMatch(input, "^(" + pattern + ")$");
@@ -86,7 +84,6 @@ namespace Be.Stateless.BizTalk.Transform.ExtensionObjects
 		/// string. If pattern is not matched in the current instance, the method returns the current instance unchanged.
 		/// </returns>
 		/// <seealso cref="Regex.Replace(string,string,string)"/>
-		[SuppressMessage("Performance", "CA1822:Mark members as static")]
 		public string Replace(string input, string pattern, string replacement)
 		{
 			return Regex.Replace(input, pattern, replacement);

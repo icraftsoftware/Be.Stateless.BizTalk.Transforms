@@ -1,0 +1,6 @@
+﻿<s0:Message xmlns:s0="urn:resources:message:bool">
+  <s0:false_int a="0">0</s0:false_int>
+  <s0:false_value a="false">false</s0:false_value>
+  <s0:true_int a="1">1</s0:true_int>
+  <s0:true_value a="true">true</s0:true_value>
+</s0:Message>

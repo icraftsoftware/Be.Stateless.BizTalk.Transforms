@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -46,7 +46,6 @@ namespace Be.Stateless.BizTalk.Transform.ExtensionObjects
 		/// Either <paramref name="then"/> or <paramref name="else"/> value depending on the Boolean value of <paramref
 		/// name="condition"/>.
 		/// </returns>
-		[SuppressMessage("Performance", "CA1822:Mark members as static")]
 		public string Iif(bool condition, string then, string @else)
 		{
 			return condition ? then : @else;
