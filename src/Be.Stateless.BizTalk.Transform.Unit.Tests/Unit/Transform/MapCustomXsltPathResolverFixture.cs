@@ -17,33 +17,39 @@
 #endregion
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using Be.Stateless.BizTalk.Resources.Transform;
 using FluentAssertions;
+using Microsoft.VisualStudio.Dia;
 using Xunit;
 
 namespace Be.Stateless.BizTalk.Unit.Transform
 {
 	public class MapCustomXsltPathResolverFixture
 	{
-		[Fact]
+		[SkippableFact]
 		public void TryResolveBtmClassSourceFilePath()
 		{
+			Skip.IfNot(IsDebugInterfaceAccessComClassRegistered());
 			typeof(TextTransform).TryResolveBtmClassSourceFilePath(out var path).Should().BeTrue();
 			path.Should().BeEquivalentTo(Path.Combine(_projectFolder, @"Be.Stateless.BizTalk.Transform.Unit.Tests\Resources\Transform\TextTransform.cs"));
 		}
 
-		[Fact]
+		[SkippableFact]
 		public void TryResolveCustomXsltPath()
 		{
+			Skip.IfNot(IsDebugInterfaceAccessComClassRegistered());
 			typeof(TextTransform).TryResolveCustomXsltPath(out var path).Should().BeTrue();
 			path.Should().BeEquivalentTo(Path.Combine(_projectFolder, @"Be.Stateless.BizTalk.Transform.Unit.Tests\Resources\Transform\TextTransform.xslt"));
 		}
 
-		[Fact]
+		[SkippableFact]
 		public void TryResolveEmbeddedXsltResourceSourceFilePath()
 		{
+			Skip.IfNot(IsDebugInterfaceAccessComClassRegistered());
 			typeof(TextTransform).TryResolveEmbeddedXsltResourceSourceFilePath("TextTransform.xslt", out var path).Should().BeTrue();
 			path.Should().BeEquivalentTo(Path.Combine(_projectFolder, @"Be.Stateless.BizTalk.Transform.Unit.Tests\Resources\Transform\TextTransform.xslt"));
 		}
@@ -56,6 +62,20 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 		private static string ComputeProjectFolder([CallerFilePath] string sourceFilePath = "")
 		{
 			return sourceFilePath.Substring(0, sourceFilePath.IndexOf(@"\Be.Stateless.BizTalk.Transform.Unit.Tests", StringComparison.OrdinalIgnoreCase));
+		}
+
+		[SuppressMessage("ReSharper", "UnusedVariable")]
+		private bool IsDebugInterfaceAccessComClassRegistered()
+		{
+			try
+			{
+				var source = (IDiaDataSource) new DiaSourceClass();
+				return true;
+			}
+			catch (COMException)
+			{
+				return false;
+			}
 		}
 
 		private static readonly string _projectFolder;
