@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FB2DB540-81B8-4FA6-A37F-2DD74DE501FC}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Be.Stateless.BizTalk.Transform.ExtensionObjects", "src\Be.Stateless.BizTalk.Transform.ExtensionObjects\Be.Stateless.BizTalk.Transform.ExtensionObjects.csproj", "{95470BB0-C68F-467D-A01F-43A162F7BF91}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Be.Stateless.BizTalk.Transform.ExtensionObjects.Tests", "src\Be.Stateless.BizTalk.Transform.ExtensionObjects.Tests\Be.Stateless.BizTalk.Transform.ExtensionObjects.Tests.csproj", "{355F6909-A36E-4E28-B893-0350C95EE73C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Be.Stateless.BizTalk.Transform.Unit", "src\Be.Stateless.BizTalk.Transform.Unit\Be.Stateless.BizTalk.Transform.Unit.csproj", "{A816B2FF-37DA-4AFC-B19B-96DA8C2A5AB0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Be.Stateless.BizTalk.Transform.Unit.Tests", "src\Be.Stateless.BizTalk.Transform.Unit.Tests\Be.Stateless.BizTalk.Transform.Unit.Tests.csproj", "{44BFFAE0-F779-4215-B911-A0AE2C52426E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{95470BB0-C68F-467D-A01F-43A162F7BF91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95470BB0-C68F-467D-A01F-43A162F7BF91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95470BB0-C68F-467D-A01F-43A162F7BF91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95470BB0-C68F-467D-A01F-43A162F7BF91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{355F6909-A36E-4E28-B893-0350C95EE73C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{355F6909-A36E-4E28-B893-0350C95EE73C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{355F6909-A36E-4E28-B893-0350C95EE73C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{355F6909-A36E-4E28-B893-0350C95EE73C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A816B2FF-37DA-4AFC-B19B-96DA8C2A5AB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A816B2FF-37DA-4AFC-B19B-96DA8C2A5AB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A816B2FF-37DA-4AFC-B19B-96DA8C2A5AB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A816B2FF-37DA-4AFC-B19B-96DA8C2A5AB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44BFFAE0-F779-4215-B911-A0AE2C52426E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44BFFAE0-F779-4215-B911-A0AE2C52426E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44BFFAE0-F779-4215-B911-A0AE2C52426E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44BFFAE0-F779-4215-B911-A0AE2C52426E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2D88118C-4847-4334-8496-DA1EF95A5EFA}
+	EndGlobalSection
+EndGlobal

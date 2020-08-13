@@ -3,18 +3,20 @@
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
     <RootNamespace>Be.Stateless.BizTalk</RootNamespace>
-    <AssemblyTitle>Be.Stateless.BizTalk.Transform.ExtensionObjects</AssemblyTitle>
-    <Description>BizTalk Factory's XSLT extension objects for general purpose BizTalk Server development.</Description>
+    <AssemblyTitle>Be.Stateless.BizTalk.Transform.Unit</AssemblyTitle>
+    <Description>BizTalk Factory's transform unit test helpers for general purpose BizTalk Server development.</Description>
   </PropertyGroup>
 
   <PropertyGroup>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/icraftsoftware/Be.Stateless.BizTalk.Transform</RepositoryUrl>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <!-- embed source files that are not tracked by the source control manager in the PDB -->
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
   </PropertyGroup>
 
   <PropertyGroup>
+    <!-- https://docs.microsoft.com/en-us/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#system-variables -->
     <ContinuousIntegrationBuild Condition="'$(TF_BUILD)' == 'true'">true</ContinuousIntegrationBuild>
     <Deterministic>true</Deterministic>
     <GeneratePackageOnBuild Condition=" '$(GeneratePackageOnBuild)' == '' ">false</GeneratePackageOnBuild>
@@ -39,6 +41,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Be.Stateless.BizTalk.Dsl.Abstractions" Version="2.0.20224.34460" />
+    <PackageReference Include="Be.Stateless.BizTalk.Stream" Version="2.0.20225.45734" />
+    <PackageReference Include="Be.Stateless.BizTalk.Xml" Version="2.0.20225.45269" />
+    <PackageReference Include="Be.Stateless.Stream" Version="2.0.20224.35297" />
+    <PackageReference Include="Be.Stateless.Xml" Version="2.0.20224.35911" />
+    <PackageReference Include="BizTalk.Server.2020.Runtime" Version="1.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="BizTalk.Server.2020.Utilities" Version="1.0.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
