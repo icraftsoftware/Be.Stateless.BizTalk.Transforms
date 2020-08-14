@@ -22,7 +22,6 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 using System.Xml.XPath;
-using Be.Stateless.Extensions;
 using Be.Stateless.Xml;
 
 namespace Be.Stateless.BizTalk.Unit.Transform
@@ -86,7 +85,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 
 		protected override XPathNavigator CreateXPathNavigatorDecorator(XPathNavigator decoratedNavigator)
 		{
-			return decoratedNavigator.IfNotNull(dn => new TransformFixtureXmlResult(dn, XmlNamespaceManager));
+			return new TransformFixtureXmlResult(decoratedNavigator, XmlNamespaceManager);
 		}
 
 		#endregion

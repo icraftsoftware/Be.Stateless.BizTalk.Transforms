@@ -42,10 +42,10 @@
 
   <ItemGroup>
     <PackageReference Include="Be.Stateless.BizTalk.Dsl.Abstractions" Version="2.0.20224.34460" />
-    <PackageReference Include="Be.Stateless.BizTalk.Stream" Version="2.0.20225.45734" />
-    <PackageReference Include="Be.Stateless.BizTalk.Xml" Version="2.0.20225.45269" />
+    <PackageReference Include="Be.Stateless.BizTalk.Stream" Version="2.0.20226.41871" />
+    <PackageReference Include="Be.Stateless.BizTalk.Xml" Version="2.0.20226.41844" />
     <PackageReference Include="Be.Stateless.Stream" Version="2.0.20224.35297" />
-    <PackageReference Include="Be.Stateless.Xml" Version="2.0.20224.35911" />
+    <PackageReference Include="Be.Stateless.Xml" Version="2.0.20227.27004" />
     <PackageReference Include="BizTalk.Server.2020.Runtime" Version="1.0.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
