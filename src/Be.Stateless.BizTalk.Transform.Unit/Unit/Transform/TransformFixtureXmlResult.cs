@@ -17,6 +17,7 @@
 #endregion
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -35,6 +36,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 
 		#region ITransformFixtureXmlResult Members
 
+		[SuppressMessage("ReSharper", "AssignNullToNotNullAttribute")]
 		public string XmlContent
 		{
 			get
