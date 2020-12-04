@@ -25,7 +25,7 @@ using System.Xml.XPath;
 using Be.Stateless.Xml.XPath.Extensions;
 using FluentAssertions;
 using Xunit;
-using static Be.Stateless.DelegateFactory;
+using static Be.Stateless.Unit.DelegateFactory;
 
 namespace Be.Stateless.BizTalk.Unit.Xml.XPath
 {

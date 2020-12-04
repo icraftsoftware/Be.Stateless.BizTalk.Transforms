@@ -19,8 +19,8 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Xml;
+using Be.Stateless.BizTalk.Dummies.Transform;
 using Be.Stateless.BizTalk.Message;
-using Be.Stateless.BizTalk.Resources.Transform;
 using Be.Stateless.BizTalk.Schema;
 using Be.Stateless.IO.Extensions;
 using Be.Stateless.Resources;
@@ -142,7 +142,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 			}
 		}
 
-		private readonly XmlDocument _document = MessageFactory.CreateMessage<btf2_services_header>(
+		private readonly XmlDocument _document = MessageBodyFactory.Create<btf2_services_header>(
 			ResourceManager.Load(
 				Assembly.GetExecutingAssembly(),
 				"Be.Stateless.BizTalk.Resources.Message.Sample.xml",

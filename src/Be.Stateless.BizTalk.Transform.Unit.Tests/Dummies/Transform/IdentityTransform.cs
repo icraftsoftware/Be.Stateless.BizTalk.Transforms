@@ -16,36 +16,35 @@
 
 #endregion
 
-using System.Reflection;
-using Be.Stateless.IO.Extensions;
-using Be.Stateless.Resources;
 using Microsoft.XLANGs.BaseTypes;
 
-namespace Be.Stateless.BizTalk.Resources.Transform
+namespace Be.Stateless.BizTalk.Dummies.Transform
 {
-	[SchemaReference(@"Be.Stateless.BizTalk.Schemas.Xml.Any", typeof(Schemas.Xml.Any))]
-	public class TextTransform : TransformBase
+	[SchemaReference("Microsoft.XLANGs.BaseTypes.Any", typeof(Any))]
+	public class IdentityTransform : TransformBase
 	{
-		static TextTransform()
+		static IdentityTransform()
 		{
-			_xmlContent = ResourceManager.Load(Assembly.GetExecutingAssembly(), "Be.Stateless.BizTalk.Resources.Transform.TextTransform.xslt", s => s.ReadToEnd());
+			_xmlContent = @"<?xml version='1.0' encoding='utf-8'?>
+<xsl:stylesheet xmlns:xsl='http://www.w3.org/1999/XSL/Transform' version='1.0'>
+  <xsl:output omit-xml-declaration='yes' method='xml' version='1.0' />
+  <xsl:template match='@*|node()'>
+    <xsl:copy>
+      <xsl:apply-templates select='@*|node()'/>
+    </xsl:copy>
+  </xsl:template>
+</xsl:stylesheet>";
 		}
 
 		#region Base Class Member Overrides
 
-		public override string[] SourceSchemas
-		{
-			get { return new[] { @"Be.Stateless.BizTalk.Schemas.Xml.Any" }; }
-		}
+		public override string[] SourceSchemas => new[] { typeof(Any).FullName };
 
-		public override string[] TargetSchemas
-		{
-			get { return new[] { @"Be.Stateless.BizTalk.Schemas.Xml.Any" }; }
-		}
+		public override string[] TargetSchemas => new[] { typeof(Any).FullName };
 
 		public override string XmlContent => _xmlContent;
 
-		public override string XsltArgumentListContent => @"<ExtensionObjects />";
+		public override string XsltArgumentListContent => "<ExtensionObjects />";
 
 		#endregion
 

@@ -21,9 +21,8 @@ using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Xml;
 using System.Xml.Schema;
+using Be.Stateless.BizTalk.Dummies.Transform;
 using Be.Stateless.BizTalk.Message;
-using Be.Stateless.BizTalk.Resources.Transform;
-using Be.Stateless.BizTalk.Schemas.Xml;
 using Be.Stateless.IO.Extensions;
 using Be.Stateless.Resources;
 using Be.Stateless.Xml.Extensions;
@@ -32,7 +31,7 @@ using BTF2Schemas;
 using BTS;
 using FluentAssertions;
 using Xunit;
-using static Be.Stateless.DelegateFactory;
+using static Be.Stateless.Unit.DelegateFactory;
 
 namespace Be.Stateless.BizTalk.Unit.Transform
 {
@@ -50,7 +49,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 								input => input
 									.Arguments(new XsltArgumentList())
 									.Context(new MessageContextMock().Object)
-									.Message<Envelope>(stream1)
+									.Message<soap_envelope_1__2.Envelope>(stream1)
 									.Message(stream2))
 							.Transform
 							.OutputsXml(
@@ -72,7 +71,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 					.Transform
 					.OutputsXml(
 						output => output
-							.ConformingTo<Envelope>()
+							.ConformingTo<btf2_receipt_header>()
 							.ConformingTo<soap_envelope_1__2.Fault>()
 							.WithStrictConformanceLevel());
 
@@ -86,7 +85,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 		[SuppressMessage("ReSharper", "AccessToDisposedClosure")]
 		public void InvalidTransformResultThrows()
 		{
-			using (var stream = MessageFactory.CreateMessage<btf2_services_header>().AsStream())
+			using (var stream = MessageBodyFactory.Create<btf2_services_header>().AsStream())
 			{
 				var setup = Given(input => input.Message(stream))
 					.Transform
@@ -115,7 +114,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 		[SuppressMessage("ReSharper", "AccessToDisposedClosure")]
 		public void SetupValuednessValidationCallbackConfirmingSeverity()
 		{
-			using (var stream = MessageFactory.CreateMessage<btf2_services_header>().AsStream())
+			using (var stream = MessageBodyFactory.Create<btf2_services_header>().AsStream())
 			{
 				var setup = Given(input => input.Message(stream))
 					.Transform
@@ -137,7 +136,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 		[SuppressMessage("ReSharper", "AccessToDisposedClosure")]
 		public void SetupValuednessValidationCallbackDemotingSeverity()
 		{
-			using (var stream = MessageFactory.CreateMessage<btf2_services_header>().AsStream())
+			using (var stream = MessageBodyFactory.Create<btf2_services_header>().AsStream())
 			{
 				var setup = Given(input => input.Message(stream))
 					.Transform
@@ -182,7 +181,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 			{
 				var setup = Given(input => input.Message(stream))
 					.Transform
-					.OutputsXml(output => output.ConformingTo<Envelope>().WithNoConformanceLevel());
+					.OutputsXml(output => output.ConformingTo<soap_envelope_1__2.Envelope>().WithNoConformanceLevel());
 
 				Action(() => setup.Validate()).Should().NotThrow();
 			}
@@ -192,7 +191,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 		[SuppressMessage("ReSharper", "AccessToDisposedClosure")]
 		public void SetupXmlTransformWithoutConformingSchemaAndConformanceLevel()
 		{
-			using (var stream = MessageFactory.CreateMessage<btf2_services_header>().AsStream())
+			using (var stream = MessageBodyFactory.Create<btf2_services_header>().AsStream())
 			{
 				var setup = Given(input => input.Message(stream))
 					.Transform
@@ -245,7 +244,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 			}
 		}
 
-		private readonly XmlDocument _document = MessageFactory.CreateMessage<btf2_services_header>(
+		private readonly XmlDocument _document = MessageBodyFactory.Create<btf2_services_header>(
 			ResourceManager.Load(
 				Assembly.GetExecutingAssembly(),
 				"Be.Stateless.BizTalk.Resources.Message.Sample.xml",

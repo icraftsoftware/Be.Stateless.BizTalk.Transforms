@@ -19,9 +19,10 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
-using Be.Stateless.BizTalk.Resources.Transform;
+using Be.Stateless.BizTalk.Dummies.Transform;
 using FluentAssertions;
 using Microsoft.VisualStudio.Dia;
 using Xunit;
@@ -30,30 +31,6 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 {
 	public class MapCustomXsltPathResolverFixture
 	{
-		[SkippableFact]
-		public void TryResolveBtmClassSourceFilePath()
-		{
-			Skip.IfNot(IsDebugInterfaceAccessComClassRegistered());
-			typeof(TextTransform).TryResolveBtmClassSourceFilePath(out var path).Should().BeTrue();
-			path.Should().BeEquivalentTo(Path.Combine(_projectFolder, @"Be.Stateless.BizTalk.Transform.Unit.Tests\Resources\Transform\TextTransform.cs"));
-		}
-
-		[SkippableFact]
-		public void TryResolveCustomXsltPath()
-		{
-			Skip.IfNot(IsDebugInterfaceAccessComClassRegistered());
-			typeof(TextTransform).TryResolveCustomXsltPath(out var path).Should().BeTrue();
-			path.Should().BeEquivalentTo(Path.Combine(_projectFolder, @"Be.Stateless.BizTalk.Transform.Unit.Tests\Resources\Transform\TextTransform.xslt"));
-		}
-
-		[SkippableFact]
-		public void TryResolveEmbeddedXsltResourceSourceFilePath()
-		{
-			Skip.IfNot(IsDebugInterfaceAccessComClassRegistered());
-			typeof(TextTransform).TryResolveEmbeddedXsltResourceSourceFilePath("TextTransform.xslt", out var path).Should().BeTrue();
-			path.Should().BeEquivalentTo(Path.Combine(_projectFolder, @"Be.Stateless.BizTalk.Transform.Unit.Tests\Resources\Transform\TextTransform.xslt"));
-		}
-
 		static MapCustomXsltPathResolverFixture()
 		{
 			_projectFolder = ComputeProjectFolder();
@@ -61,7 +38,32 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 
 		private static string ComputeProjectFolder([CallerFilePath] string sourceFilePath = "")
 		{
-			return sourceFilePath.Substring(0, sourceFilePath.IndexOf(@"\Be.Stateless.BizTalk.Transform.Unit.Tests", StringComparison.OrdinalIgnoreCase));
+			var assemblyName = Assembly.GetExecutingAssembly().GetName().Name;
+			return sourceFilePath.Substring(0, sourceFilePath.IndexOf($@"\{assemblyName}", StringComparison.OrdinalIgnoreCase) + assemblyName.Length + 1);
+		}
+
+		[SkippableFact]
+		public void TryResolveBtmClassSourceFilePath()
+		{
+			Skip.IfNot(IsDebugInterfaceAccessComClassRegistered());
+			typeof(TextTransform).TryResolveBtmClassSourceFilePath(out var path).Should().BeTrue();
+			path.Should().BeEquivalentTo(Path.Combine(_projectFolder, @"Dummies\Transform\TextTransform.cs"));
+		}
+
+		[SkippableFact]
+		public void TryResolveCustomXsltPath()
+		{
+			Skip.IfNot(IsDebugInterfaceAccessComClassRegistered());
+			typeof(TextTransform).TryResolveCustomXsltPath(out var path).Should().BeTrue();
+			path.Should().BeEquivalentTo(Path.Combine(_projectFolder, @"Dummies\Transform\TextTransform.xslt"));
+		}
+
+		[SkippableFact]
+		public void TryResolveEmbeddedXsltResourceSourceFilePath()
+		{
+			Skip.IfNot(IsDebugInterfaceAccessComClassRegistered());
+			typeof(TextTransform).TryResolveEmbeddedXsltResourceSourceFilePath("TextTransform.xslt", out var path).Should().BeTrue();
+			path.Should().BeEquivalentTo(Path.Combine(_projectFolder, @"Dummies\Transform\TextTransform.xslt"));
 		}
 
 		[SuppressMessage("ReSharper", "UnusedVariable")]

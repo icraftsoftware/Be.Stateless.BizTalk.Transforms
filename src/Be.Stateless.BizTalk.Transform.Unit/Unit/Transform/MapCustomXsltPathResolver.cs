@@ -23,6 +23,7 @@ using System.Text.RegularExpressions;
 using Be.Stateless.BizTalk.Xml;
 using Be.Stateless.BizTalk.Xml.Xsl.Extensions;
 using Be.Stateless.Extensions;
+using Be.Stateless.IO.Extensions;
 using Microsoft.VisualStudio.Dia;
 using Microsoft.XLANGs.BaseTypes;
 
@@ -147,7 +148,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 
 			// ReSharper disable once PossibleNullReferenceException
 			var referenceTypeNamespace = type.FullName.Substring(0, type.FullName.Length - type.Name.Length - 1);
-			var commonPath = new[] { referenceTypeNamespace, resourceNamespace }.CommonPath(".");
+			var commonPath = new[] { referenceTypeNamespace, resourceNamespace }.GetCommonPath('.');
 
 			var trailingTypePathSegments = referenceTypeNamespace
 				.Substring(commonPath.Length)
