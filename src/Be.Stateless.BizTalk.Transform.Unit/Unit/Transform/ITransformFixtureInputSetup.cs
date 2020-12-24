@@ -18,7 +18,6 @@
 
 using System.Diagnostics.CodeAnalysis;
 using System.Xml.Schema;
-using Be.Stateless.BizTalk.Dsl;
 using Be.Stateless.Xml.Xsl;
 using Microsoft.BizTalk.Message.Interop;
 using Microsoft.XLANGs.BaseTypes;

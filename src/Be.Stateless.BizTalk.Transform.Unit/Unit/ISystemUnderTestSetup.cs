@@ -16,8 +16,6 @@
 
 #endregion
 
-using Be.Stateless.BizTalk.Dsl;
-
 namespace Be.Stateless.BizTalk.Unit
 {
 	public interface ISystemUnderTestSetup<out T> : IFluentInterface

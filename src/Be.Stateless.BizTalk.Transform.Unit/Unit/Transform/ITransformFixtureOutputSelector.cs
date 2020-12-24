@@ -17,7 +17,6 @@
 #endregion
 
 using System;
-using Be.Stateless.BizTalk.Dsl;
 
 namespace Be.Stateless.BizTalk.Unit.Transform
 {

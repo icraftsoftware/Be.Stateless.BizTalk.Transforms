@@ -38,21 +38,24 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Be.Stateless.BizTalk.Dsl.Abstractions" Version="2.0.20338.38226" />
-    <PackageReference Include="Be.Stateless.BizTalk.Stream" Version="2.0.20338.28966" />
-    <PackageReference Include="Be.Stateless.BizTalk.Xml" Version="2.0.20338.28952" />
+    <PackageReference Include="Be.Stateless.BizTalk.Stream" Version="2.0.20359.36400" />
+    <PackageReference Include="Be.Stateless.BizTalk.Xml" Version="2.0.20359.36355" />
     <PackageReference Include="Be.Stateless.Extensions" Version="2.0.20338.1409" />
     <PackageReference Include="Be.Stateless.Stream" Version="2.0.20338.28746" />
     <PackageReference Include="Be.Stateless.Xml" Version="2.0.20338.28820" />
-    <PackageReference Include="BizTalk.Server.2020.Runtime" Version="1.0.4">
+    <PackageReference Include="BizTalk.Server.2020.Runtime" Version="1.0.5">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="BizTalk.Server.2020.Utilities" Version="1.0.2">
+    <PackageReference Include="BizTalk.Server.2020.Utilities" Version="1.0.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.3.1">
+    <PackageReference Include="IFluentInterface" Version="2.1.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="5.0.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>

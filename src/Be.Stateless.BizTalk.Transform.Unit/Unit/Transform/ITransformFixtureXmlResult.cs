@@ -19,7 +19,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Xml;
 using System.Xml.XPath;
-using Be.Stateless.BizTalk.Dsl;
 
 namespace Be.Stateless.BizTalk.Unit.Transform
 {
