@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@ using System.Xml.XPath;
 using Be.Stateless.Xml.XPath.Extensions;
 using FluentAssertions;
 using Xunit;
-using static Be.Stateless.Unit.DelegateFactory;
+using static FluentAssertions.FluentActions;
 
 namespace Be.Stateless.BizTalk.Unit.Xml.XPath
 {
@@ -40,7 +40,7 @@ namespace Be.Stateless.BizTalk.Unit.Xml.XPath
 
 				var sut = new ValuednessValidator(navigator, null);
 
-				Action(() => sut.Validate()).Should().Throw<XmlException>();
+				Invoking(() => sut.Validate()).Should().Throw<XmlException>();
 			}
 		}
 
@@ -54,7 +54,7 @@ namespace Be.Stateless.BizTalk.Unit.Xml.XPath
 
 				var sut = new ValuednessValidator(navigator, ValidationCallback);
 
-				Action(() => sut.Validate())
+				Invoking(() => sut.Validate())
 					.Should().Throw<XmlException>()
 					.WithMessage(
 						"The following nodes have either no value nor any child element:" + Environment.NewLine + string.Join(

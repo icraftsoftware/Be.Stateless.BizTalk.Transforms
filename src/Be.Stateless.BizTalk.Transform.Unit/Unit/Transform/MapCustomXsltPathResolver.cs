@@ -1,6 +1,6 @@
-#region Copyright & License
+ï»¿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright Â© 2012 - 2021 FranÃ§ois Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -171,7 +171,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 
 		private static bool TryResolvePdbFilePath(this Type type, out string path)
 		{
-			path = Regex.Replace(new Uri(type.Assembly.CodeBase).AbsolutePath, @"\.dll", ".pdb", RegexOptions.IgnoreCase);
+			path = Regex.Replace(type.Assembly.Location, @"\.dll", ".pdb", RegexOptions.IgnoreCase);
 			return File.Exists(path);
 		}
 	}

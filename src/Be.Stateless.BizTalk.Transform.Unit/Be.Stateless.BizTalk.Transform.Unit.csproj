@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
     <RootNamespace>Be.Stateless.BizTalk</RootNamespace>
-    <AssemblyTitle>Be.Stateless.BizTalk.Transform.Unit</AssemblyTitle>
+    <AssemblyName>Be.Stateless.BizTalk.Transform.Unit</AssemblyName>
     <Description>BizTalk Factory's transform unit test helpers for general purpose BizTalk Server development.</Description>
   </PropertyGroup>
 
@@ -18,18 +18,18 @@
   <PropertyGroup>
     <GeneratePackageOnBuild Condition=" '$(GeneratePackageOnBuild)' == '' ">false</GeneratePackageOnBuild>
     <IsPackable>true</IsPackable>
-    <PackageId>$(AssemblyTitle)</PackageId>
+    <PackageId>$(AssemblyName)</PackageId>
     <PackageDescription>$(Description)</PackageDescription>
     <!--<PackageIconUrl>icon url prop</PackageIconUrl>-->
     <PackageProjectUrl>$(RepositoryUrl)</PackageProjectUrl>
     <!--<PackageReleaseNotes>release notes prop</PackageReleaseNotes>-->
-    <PackageTags>library extension utility</PackageTags>
+    <PackageTags>BizTalk map transform xslt extension testing utility</PackageTags>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-    <DocumentationFile>bin\Release\$(AssemblyTitle).xml</DocumentationFile>
+    <DocumentationFile>bin\Release\$(AssemblyName).xml</DocumentationFile>
     <NoWarn>1701;1702</NoWarn>
   </PropertyGroup>
 
@@ -38,11 +38,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Be.Stateless.BizTalk.Stream" Version="2.0.21008.32614" />
-    <PackageReference Include="Be.Stateless.BizTalk.Xml" Version="2.0.21008.24393" />
+    <PackageReference Include="Be.Stateless.BizTalk.Stream" Version="2.0.21071.54649" />
+    <PackageReference Include="Be.Stateless.BizTalk.Xml" Version="2.0.21071.53936" />
     <PackageReference Include="Be.Stateless.Extensions" Version="2.0.21005.38790" />
-    <PackageReference Include="Be.Stateless.Stream" Version="2.0.21005.40362" />
-    <PackageReference Include="Be.Stateless.Xml" Version="2.0.21005.41353" />
+    <PackageReference Include="Be.Stateless.Stream" Version="2.0.21071.30174" />
+    <PackageReference Include="Be.Stateless.Xml" Version="2.0.21071.49651" />
     <PackageReference Include="BizTalk.Server.2020.Runtime" Version="1.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

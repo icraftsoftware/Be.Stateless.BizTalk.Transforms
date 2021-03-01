@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
     <RootNamespace>Be.Stateless.BizTalk</RootNamespace>
-    <AssemblyTitle>Be.Stateless.BizTalk.Transform.Unit.Tests</AssemblyTitle>
+    <AssemblyName>Be.Stateless.BizTalk.Transform.Unit.Tests</AssemblyName>
     <Description>Unit tests for BizTalk Factory's transform unit test helpers for general purpose BizTalk Server development.</Description>
   </PropertyGroup>
 
@@ -21,9 +21,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Be.Stateless.BizTalk.Messaging" Version="2.0.21008.36224" />
-    <PackageReference Include="Be.Stateless.BizTalk.Messaging.Unit" Version="2.0.21008.36224" />
-    <PackageReference Include="Be.Stateless.Common.Unit" Version="2.0.21005.39505" />
+    <PackageReference Include="Be.Stateless.BizTalk.Messaging" Version="2.0.21071.55312" />
+    <PackageReference Include="Be.Stateless.BizTalk.Messaging.Unit" Version="2.0.21071.55312" />
     <PackageReference Include="BizTalk.Server.2020.Runtime" Version="1.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -37,8 +36,8 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="FluentAssertions" Version="5.10.3" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.8.3" />
-    <PackageReference Include="Moq" Version="4.15.2" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.1" />
+    <PackageReference Include="Moq" Version="4.16.1" />
     <PackageReference Include="xunit.core" Version="2.4.1" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
       <PrivateAssets>all</PrivateAssets>

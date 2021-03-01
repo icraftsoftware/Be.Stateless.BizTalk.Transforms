@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
     <RootNamespace>Be.Stateless.BizTalk</RootNamespace>
-    <AssemblyTitle>Be.Stateless.BizTalk.Transform.ExtensionObjects</AssemblyTitle>
+    <AssemblyName>Be.Stateless.BizTalk.Transform.ExtensionObjects</AssemblyName>
     <Description>BizTalk Factory's XSLT extension objects for general purpose BizTalk Server development.</Description>
   </PropertyGroup>
 
@@ -17,18 +17,18 @@
   <PropertyGroup>
     <GeneratePackageOnBuild Condition=" '$(GeneratePackageOnBuild)' == '' ">false</GeneratePackageOnBuild>
     <IsPackable>true</IsPackable>
-    <PackageId>$(AssemblyTitle)</PackageId>
+    <PackageId>$(AssemblyName)</PackageId>
     <PackageDescription>$(Description)</PackageDescription>
     <!--<PackageIconUrl>icon url prop</PackageIconUrl>-->
     <PackageProjectUrl>$(RepositoryUrl)</PackageProjectUrl>
     <!--<PackageReleaseNotes>release notes prop</PackageReleaseNotes>-->
-    <PackageTags>library extension utility</PackageTags>
+    <PackageTags>BizTalk map transform xslt extension utility</PackageTags>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-    <DocumentationFile>bin\Release\$(AssemblyTitle).xml</DocumentationFile>
+    <DocumentationFile>bin\Release\$(AssemblyName).xml</DocumentationFile>
     <NoWarn>1701;1702</NoWarn>
   </PropertyGroup>
 

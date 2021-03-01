@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -31,7 +31,7 @@ using BTF2Schemas;
 using BTS;
 using FluentAssertions;
 using Xunit;
-using static Be.Stateless.Unit.DelegateFactory;
+using static FluentAssertions.FluentActions;
 
 namespace Be.Stateless.BizTalk.Unit.Transform
 {
@@ -44,7 +44,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 			using (var stream1 = _document.AsStream())
 			using (var stream2 = _document.AsStream())
 			{
-				Action(
+				Invoking(
 						() => Given(
 								input => input
 									.Arguments(new XsltArgumentList())
@@ -75,7 +75,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 							.ConformingTo<soap_envelope_1__2.Fault>()
 							.WithStrictConformanceLevel());
 
-				Action(() => setup.Validate())
+				Invoking(() => setup.Validate())
 					.Should().Throw<XmlSchemaValidationException>()
 					.WithMessage("Transform's output failed schema(s) validation for the following reason:*");
 			}
@@ -91,7 +91,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 					.Transform
 					.OutputsXml(output => output.ConformingTo<btf2_services_header>().WithStrictConformanceLevel());
 
-				Action(() => setup.Validate()).Should().Throw<XmlSchemaValidationException>();
+				Invoking(() => setup.Validate()).Should().Throw<XmlSchemaValidationException>();
 			}
 		}
 
@@ -101,7 +101,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 		{
 			using (var stream = _document.AsStream())
 			{
-				Action(
+				Invoking(
 						() => Given(input => input.Message(stream))
 							.Transform
 							.OutputsText())
@@ -123,7 +123,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 							.WithValuednessValidationCallback((sender, args) => args.Severity = XmlSeverityType.Error)
 							.ConformingTo<btf2_services_header>().WithNoConformanceLevel());
 
-				Action(() => setup.Validate())
+				Invoking(() => setup.Validate())
 					.Should().Throw<XmlException>()
 					.Where(
 						exception => exception.Message.Contains("/ns0:services/ns0:deliveryReceiptRequest/ns0:sendTo/ns0:address")
@@ -146,7 +146,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 							.ConformingTo<btf2_services_header>().WithNoConformanceLevel()
 					);
 
-				Action(() => setup.Validate()).Should().NotThrow();
+				Invoking(() => setup.Validate()).Should().NotThrow();
 			}
 		}
 
@@ -169,7 +169,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 							.ConformingTo<btf2_services_header>()
 							.WithLaxConformanceLevel());
 
-				Action(() => setup.Validate()).Should().NotThrow();
+				Invoking(() => setup.Validate()).Should().NotThrow();
 			}
 		}
 
@@ -183,7 +183,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 					.Transform
 					.OutputsXml(output => output.ConformingTo<soap_envelope_1__2.Envelope>().WithNoConformanceLevel());
 
-				Action(() => setup.Validate()).Should().NotThrow();
+				Invoking(() => setup.Validate()).Should().NotThrow();
 			}
 		}
 
@@ -200,7 +200,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 							.WithValuednessValidationCallback((s, args) => args.Severity = XmlSeverityType.Warning)
 							.WithNoConformanceLevel());
 
-				Action(() => setup.Validate()).Should().NotThrow();
+				Invoking(() => setup.Validate()).Should().NotThrow();
 			}
 		}
 
@@ -210,7 +210,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 		{
 			using (var stream = _document.AsStream())
 			{
-				Action(
+				Invoking(
 						() => Given(input => input.Message(stream))
 							.Transform
 							.OutputsXml(output => output.WithStrictConformanceLevel()))
@@ -222,7 +222,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 		[Fact]
 		public void SetupXmlTransformWithoutInputMessage()
 		{
-			Action(
+			Invoking(
 					() => Given(input => { })
 						.Transform
 						.OutputsXml(output => output.WithStrictConformanceLevel()))
@@ -240,7 +240,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 					.Transform
 					.OutputsXml(output => output.ConformingTo<btf2_services_header>().WithStrictConformanceLevel());
 
-				Action(() => setup.Validate()).Should().NotThrow();
+				Invoking(() => setup.Validate()).Should().NotThrow();
 			}
 		}
 

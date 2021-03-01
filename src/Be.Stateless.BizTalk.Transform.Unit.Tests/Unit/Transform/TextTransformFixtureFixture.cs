@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@ using Be.Stateless.Xml.Extensions;
 using BTF2Schemas;
 using FluentAssertions;
 using Xunit;
-using static Be.Stateless.Unit.DelegateFactory;
+using static FluentAssertions.FluentActions;
 
 namespace Be.Stateless.BizTalk.Unit.Transform
 {
@@ -56,7 +56,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 		{
 			using (var stream = _document.AsStream())
 			{
-				Action(
+				Invoking(
 						() => Given(input => input.Message(stream))
 							.Transform
 							.OutputsXml(output => output.WithNoConformanceLevel()))
