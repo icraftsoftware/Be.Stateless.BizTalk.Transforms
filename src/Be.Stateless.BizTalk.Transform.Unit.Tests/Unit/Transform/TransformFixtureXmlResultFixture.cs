@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -46,7 +46,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 
 				var result = setup.Validate();
 
-				result.XmlNamespaceManager.AddNamespace("tns", SchemaMetadata.For<btf2_services_header>().TargetNamespace);
+				result.NamespaceManager.AddNamespace("tns", SchemaMetadata.For<btf2_services_header>().TargetNamespace);
 				result.SelectSingleNode("//*[1]/tns:sendBy/text()").Value.Should().Be("2012-04-12T12:13:14");
 			}
 		}
@@ -63,7 +63,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 
 				var result = setup.Validate();
 
-				result.XmlNamespaceManager.AddNamespace("tns", SchemaMetadata.For<btf2_services_header>().TargetNamespace);
+				result.NamespaceManager.AddNamespace("tns", SchemaMetadata.For<btf2_services_header>().TargetNamespace);
 				result.StringJoin("//tns:sendBy").Should().Be("2012-04-12T12:13:14#2012-04-12T23:22:21");
 			}
 		}
@@ -80,7 +80,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 
 				var result = setup.Validate();
 
-				result.XmlNamespaceManager.AddNamespace("tns", SchemaMetadata.For<btf2_services_header>().TargetNamespace);
+				result.NamespaceManager.AddNamespace("tns", SchemaMetadata.For<btf2_services_header>().TargetNamespace);
 				result.Select("//tns:sendBy").Should().HaveCount(2);
 			}
 		}
@@ -101,7 +101,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 
 				var result = setup.Validate();
 
-				result.XmlNamespaceManager.AddNamespace("ns", SchemaMetadata.For<btf2_services_header>().TargetNamespace);
+				result.NamespaceManager.AddNamespace("ns", SchemaMetadata.For<btf2_services_header>().TargetNamespace);
 				var deliveryReceiptRequest = result.SelectSingleNode("/ns:services/ns:deliveryReceiptRequest");
 				deliveryReceiptRequest.Should().NotBeNull();
 				deliveryReceiptRequest.SelectSingleNode("ns:sendBy").Value.Should().Be("2012-04-12T12:13:14");
@@ -120,7 +120,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 
 				var result = setup.Validate();
 
-				result.XmlNamespaceManager.AddNamespace("tns", SchemaMetadata.For<btf2_services_header>().TargetNamespace);
+				result.NamespaceManager.AddNamespace("tns", SchemaMetadata.For<btf2_services_header>().TargetNamespace);
 				result.SelectSingleNode("//*[1]/tns:unknown").Should().BeNull();
 			}
 		}
@@ -137,7 +137,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 
 				var result = setup.Validate();
 
-				result.XmlNamespaceManager.AddNamespace("tns", SchemaMetadata.For<btf2_services_header>().TargetNamespace);
+				result.NamespaceManager.AddNamespace("tns", SchemaMetadata.For<btf2_services_header>().TargetNamespace);
 				result.Select("//*[1]/tns:unknown").Should().BeEmpty();
 			}
 		}

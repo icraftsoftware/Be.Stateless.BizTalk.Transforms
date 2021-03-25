@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,23 +16,19 @@
 
 #endregion
 
-using System;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Xml;
 using System.Xml.XPath;
-using Be.Stateless.Xml;
+using Be.Stateless.Xml.XPath;
 
 namespace Be.Stateless.BizTalk.Unit.Transform
 {
-	public class TransformFixtureXmlResult : XPathNavigatorDecorator, ITransformFixtureXmlResult
+	public class TransformFixtureXmlResult : NamespaceAffinitiveXPathNavigator, ITransformFixtureXmlResult
 	{
-		internal TransformFixtureXmlResult(XPathNavigator decoratedNavigator, XmlNamespaceManager xmlNamespaceManager) : base(decoratedNavigator)
-		{
-			XmlNamespaceManager = xmlNamespaceManager ?? throw new ArgumentNullException(nameof(xmlNamespaceManager));
-		}
+		internal TransformFixtureXmlResult(XPathNavigator decoratedNavigator, XmlNamespaceManager xmlNamespaceManager) : base(decoratedNavigator, xmlNamespaceManager) { }
 
 		#region ITransformFixtureXmlResult Members
 
@@ -52,33 +48,11 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 			}
 		}
 
-		public XmlNamespaceManager XmlNamespaceManager { get; }
-
 		public string StringJoin(string xpath, char separator = '#')
 		{
-			return Select(xpath, XmlNamespaceManager)
+			return Select(xpath, NamespaceManager)
 				.OfType<XPathNavigator>()
 				.Aggregate(string.Empty, (str, node) => str + node.Value + separator, str => str.TrimEnd(separator));
-		}
-
-		public override object Evaluate(string xpath)
-		{
-			return base.Evaluate(xpath, XmlNamespaceManager);
-		}
-
-		public override bool Matches(string xpath)
-		{
-			return base.Matches(XPathExpression.Compile(xpath, XmlNamespaceManager));
-		}
-
-		public override XPathNodeIterator Select(string xpath)
-		{
-			return base.Select(xpath, XmlNamespaceManager);
-		}
-
-		public override XPathNavigator SelectSingleNode(string xpath)
-		{
-			return base.SelectSingleNode(xpath, XmlNamespaceManager);
 		}
 
 		#endregion
@@ -87,7 +61,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 
 		protected override XPathNavigator CreateXPathNavigatorDecorator(XPathNavigator decoratedNavigator)
 		{
-			return new TransformFixtureXmlResult(decoratedNavigator, XmlNamespaceManager);
+			return new TransformFixtureXmlResult(decoratedNavigator, NamespaceManager);
 		}
 
 		#endregion

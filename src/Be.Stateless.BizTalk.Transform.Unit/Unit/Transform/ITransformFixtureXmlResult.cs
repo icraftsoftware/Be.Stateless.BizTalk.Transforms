@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -27,18 +27,18 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 	public interface ITransformFixtureXmlResult : IFluentInterface
 	{
 		/// <summary>
+		/// Namespace resolver initialized with each of the namespaces and their prefixes declared in the XSLT.
+		/// </summary>
+		XmlNamespaceManager NamespaceManager { get; }
+
+		/// <summary>
 		/// The whole result of the transform as an XML string.
 		/// </summary>
 		string XmlContent { get; }
 
 		/// <summary>
-		/// Namespace resolver initialized with each of the namespaces and their prefixes declared in the XSLT.
-		/// </summary>
-		XmlNamespaceManager XmlNamespaceManager { get; }
-
-		/// <summary>
 		/// Evaluates the specified XPath expression and returns the typed result, implicitly using the <see
-		/// cref="XmlNamespaceManager" /> to resolve namespace prefixes in the XPath expression.
+		/// cref="NamespaceManager" /> to resolve namespace prefixes in the XPath expression.
 		/// </summary>
 		/// <param name="xpath">
 		/// A <see cref="string" /> representing an XPath expression that can be evaluated.
@@ -52,7 +52,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 
 		/// <summary>
 		/// Determines whether the current node matches the specified XPath expression implicitly using the <see
-		/// cref="XmlNamespaceManager" /> to resolve namespace prefixes.
+		/// cref="NamespaceManager" /> to resolve namespace prefixes.
 		/// </summary>
 		/// <param name="xpath">
 		/// A <see cref="string" /> representing an XPath expression.
@@ -64,7 +64,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 		bool Matches(string xpath);
 
 		/// <summary>
-		/// Selects a node set using the specified XPath expression implicitly using the <see cref="XmlNamespaceManager" /> to
+		/// Selects a node set using the specified XPath expression implicitly using the <see cref="NamespaceManager" /> to
 		/// resolve namespace prefixes in the XPath expression.
 		/// </summary>
 		/// <param name="xpath">
@@ -78,7 +78,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 
 		/// <summary>
 		/// Selects a single node in the <see cref="XPathNavigator" /> object using the specified XPath query and the implicit
-		/// <see cref="XmlNamespaceManager" /> to resolve namespace prefixes.
+		/// <see cref="NamespaceManager" /> to resolve namespace prefixes.
 		/// </summary>
 		/// <param name="xpath">
 		/// A <see cref="string" /> representing an XPath expression.
