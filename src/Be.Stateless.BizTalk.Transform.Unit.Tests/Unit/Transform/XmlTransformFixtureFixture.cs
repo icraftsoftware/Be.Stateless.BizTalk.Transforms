@@ -54,7 +54,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 							.Transform
 							.OutputsXml(
 								output => output
-									.WithValuednessValidationCallback((sender, args) => args.Severity = XmlSeverityType.Warning)
+									.WithValuednessValidationCallback((_, args) => args.Severity = XmlSeverityType.Warning)
 									.WithNoConformanceLevel()))
 					.Should().Throw<XmlSchemaValidationException>()
 					.WithMessage("Transform's input message #1 failed 'Envelope' schema validation for the following reason:*");
@@ -120,7 +120,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 					.Transform
 					.OutputsXml(
 						output => output
-							.WithValuednessValidationCallback((sender, args) => args.Severity = XmlSeverityType.Error)
+							.WithValuednessValidationCallback((_, args) => args.Severity = XmlSeverityType.Error)
 							.ConformingTo<btf2_services_header>().WithNoConformanceLevel());
 
 				Invoking(() => setup.Validate())
@@ -142,7 +142,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 					.Transform
 					.OutputsXml(
 						output => output
-							.WithValuednessValidationCallback((sender, args) => args.Severity = XmlSeverityType.Warning)
+							.WithValuednessValidationCallback((_, args) => args.Severity = XmlSeverityType.Warning)
 							.ConformingTo<btf2_services_header>().WithNoConformanceLevel()
 					);
 
@@ -197,7 +197,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 					.Transform
 					.OutputsXml(
 						output => output
-							.WithValuednessValidationCallback((s, args) => args.Severity = XmlSeverityType.Warning)
+							.WithValuednessValidationCallback((_, args) => args.Severity = XmlSeverityType.Warning)
 							.WithNoConformanceLevel());
 
 				Invoking(() => setup.Validate()).Should().NotThrow();
@@ -223,7 +223,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 		public void SetupXmlTransformWithoutInputMessage()
 		{
 			Invoking(
-					() => Given(input => { })
+					() => Given(_ => { })
 						.Transform
 						.OutputsXml(output => output.WithStrictConformanceLevel()))
 				.Should().Throw<InvalidOperationException>()

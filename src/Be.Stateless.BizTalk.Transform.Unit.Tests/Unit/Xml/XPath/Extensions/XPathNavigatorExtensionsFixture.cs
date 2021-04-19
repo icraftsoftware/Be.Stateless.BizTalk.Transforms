@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -28,6 +28,20 @@ namespace Be.Stateless.BizTalk.Unit.Xml.XPath.Extensions
 {
 	public class XPathNavigatorExtensionsFixture : IDisposable
 	{
+		#region Setup/Teardown
+
+		public XPathNavigatorExtensionsFixture()
+		{
+			_defaultValuednessValidatorFactory = XPathNavigatorExtensions.ValuednessValidatorFactory;
+		}
+
+		public void Dispose()
+		{
+			XPathNavigatorExtensions.ValuednessValidatorFactory = _defaultValuednessValidatorFactory;
+		}
+
+		#endregion
+
 		[Fact]
 		public void CheckValuednessDelegatesToValuednessValidator()
 		{
@@ -36,7 +50,7 @@ namespace Be.Stateless.BizTalk.Unit.Xml.XPath.Extensions
 				var navigator = new XPathDocument(reader).CreateNavigator();
 
 				var mock = new Moq.Mock<ValuednessValidator>(navigator, null);
-				XPathNavigatorExtensions.ValuednessValidatorFactory = (n, c) => mock.Object;
+				XPathNavigatorExtensions.ValuednessValidatorFactory = (_, _) => mock.Object;
 				mock.Setup(m => m.Validate()).Returns(false);
 
 				navigator.CheckValuedness(null).Should().BeFalse();
@@ -63,16 +77,6 @@ namespace Be.Stateless.BizTalk.Unit.Xml.XPath.Extensions
 				var navigator = new XPathDocument(reader).CreateNavigator();
 				navigator.SelectEmptyElements().Select(n => n.Name).Should().BeEquivalentTo("empty-parent", "empty-child", "non-nil-child", "firstname");
 			}
-		}
-
-		public XPathNavigatorExtensionsFixture()
-		{
-			_defaultValuednessValidatorFactory = XPathNavigatorExtensions.ValuednessValidatorFactory;
-		}
-
-		public void Dispose()
-		{
-			XPathNavigatorExtensions.ValuednessValidatorFactory = _defaultValuednessValidatorFactory;
 		}
 
 		private readonly Func<XPathNavigator, ValuednessValidationCallback, ValuednessValidator> _defaultValuednessValidatorFactory;

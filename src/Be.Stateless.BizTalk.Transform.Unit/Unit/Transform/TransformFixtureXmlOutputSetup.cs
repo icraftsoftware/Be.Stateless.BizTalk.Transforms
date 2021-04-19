@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -139,7 +139,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 				transformStream,
 				ValidatingXmlReaderSettings.Create(
 					ContentProcessing,
-					(sender, args) => throw new XmlSchemaValidationException(
+					(_, args) => throw new XmlSchemaValidationException(
 						$"Transform's output failed schema(s) validation for the following reason:{Environment.NewLine}{args.Severity}: {args.Message}{Environment.NewLine}{Environment.NewLine}The message's content is:{Environment.NewLine}{transformStream.ReadToEnd()}{Environment.NewLine}",
 						args.Exception),
 					Schemas.ToArray()));

@@ -38,16 +38,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Be.Stateless.BizTalk.Stream" Version="2.0.21104.44616" />
-    <PackageReference Include="Be.Stateless.BizTalk.Xml" Version="2.0.21104.44011" />
+    <PackageReference Include="Be.Stateless.BizTalk.Stream" Version="2.0.21171.57568" />
+    <PackageReference Include="Be.Stateless.BizTalk.Xml" Version="2.0.21171.56884" />
     <PackageReference Include="Be.Stateless.Extensions" Version="2.0.21005.38790" />
     <PackageReference Include="Be.Stateless.Stream" Version="2.0.21104.42258" />
     <PackageReference Include="Be.Stateless.Xml" Version="2.0.21104.42878" />
-    <PackageReference Include="BizTalk.Server.2020.Runtime" Version="1.0.0">
+    <PackageReference Include="BizTalk.Server.2020.Runtime" Version="1.0.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="BizTalk.Server.2020.Utilities" Version="1.0.0">
+    <PackageReference Include="BizTalk.Server.2020.Utilities" Version="1.0.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>

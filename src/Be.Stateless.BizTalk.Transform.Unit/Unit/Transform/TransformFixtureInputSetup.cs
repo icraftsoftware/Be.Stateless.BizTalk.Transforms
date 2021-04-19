@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -80,7 +80,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 				message,
 				Be.Stateless.Xml.ValidatingXmlReaderSettings.Create(
 					contentProcessing,
-					(sender, args) => throw new XmlSchemaValidationException(
+					(_, args) => throw new XmlSchemaValidationException(
 						$"Transform's input message #{partCount + 1} failed '{typeof(TSchema).Name}' schema validation for the following reason:{Environment.NewLine}{args.Severity}: {args.Message}{Environment.NewLine}{Environment.NewLine}The message's content is:{Environment.NewLine}{message.ReadToEnd()}{Environment.NewLine}",
 						args.Exception),
 					new TSchema().CreateResolvedSchema()));

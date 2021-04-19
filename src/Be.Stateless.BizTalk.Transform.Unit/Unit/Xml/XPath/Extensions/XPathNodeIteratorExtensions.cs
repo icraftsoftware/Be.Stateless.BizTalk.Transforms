@@ -17,11 +17,14 @@
 #endregion
 
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Xml.XPath;
 
 namespace Be.Stateless.BizTalk.Unit.Xml.XPath.Extensions
 {
+	[SuppressMessage("ReSharper", "UnusedType.Global", Justification = "Public API.")]
+	[SuppressMessage("ReSharper", "UnusedMember.Global", Justification = "Public API.")]
 	public static class XPathNodeIteratorExtensions
 	{
 		public static IEnumerable<XPathNavigator> Select(this XPathNodeIterator nodeIterator, string xpath)
