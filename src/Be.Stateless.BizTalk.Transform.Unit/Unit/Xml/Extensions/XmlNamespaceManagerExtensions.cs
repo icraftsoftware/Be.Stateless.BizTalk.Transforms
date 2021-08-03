@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -43,7 +43,7 @@ namespace Be.Stateless.BizTalk.Unit.Xml.Extensions
 			where TTransform : TransformBase, new()
 		{
 			using (var sr = new StringReader(new TTransform().XmlContent))
-			using (var reader = XmlReader.Create(sr, new XmlReaderSettings { XmlResolver = null }))
+			using (var reader = XmlReader.Create(sr, new() { XmlResolver = null }))
 			{
 				var navigator = new XPathDocument(reader).CreateNavigator();
 				navigator.MoveToFollowing(XPathNodeType.Element);

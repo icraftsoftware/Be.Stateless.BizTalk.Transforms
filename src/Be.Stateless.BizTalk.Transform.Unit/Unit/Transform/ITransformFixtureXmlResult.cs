@@ -73,7 +73,6 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 		/// <returns>
 		/// An <see cref="XPathNodeIterator" /> pointing to the selected node set.
 		/// </returns>
-		[SuppressMessage("Naming", "CA1716:Identifiers should not match keywords")]
 		XPathNodeIterator Select(string xpath);
 
 		/// <summary>

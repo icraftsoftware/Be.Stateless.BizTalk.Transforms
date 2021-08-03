@@ -26,7 +26,6 @@ using Be.Stateless.BizTalk.Message;
 using Be.Stateless.IO.Extensions;
 using Be.Stateless.Resources;
 using Be.Stateless.Xml.Extensions;
-using Be.Stateless.Xml.Xsl;
 using BTF2Schemas;
 using BTS;
 using FluentAssertions;
@@ -47,7 +46,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 				Invoking(
 						() => Given(
 								input => input
-									.Arguments(new XsltArgumentList())
+									.Arguments(new())
 									.Context(new MessageContextMock().Object)
 									.Message<soap_envelope_1__2.Envelope>(stream1)
 									.Message(stream2))
@@ -159,7 +158,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 			{
 				var setup = Given(
 						input => input
-							.Arguments(new XsltArgumentList())
+							.Arguments(new())
 							.Context(new MessageContextMock().Object)
 							.Message<btf2_services_header>(stream1)
 							.Message(stream2))

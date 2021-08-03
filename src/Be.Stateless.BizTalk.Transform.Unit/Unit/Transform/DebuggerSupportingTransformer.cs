@@ -46,7 +46,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 		protected override XslCompiledTransformDescriptor LookupTransformDescriptor(Type transform)
 		{
 			return _customXsltPathResolver.TryResolveXsltPath(out var sourceXsltFilePath)
-				? new XslCompiledTransformDescriptor(new DebuggerSupportingXslCompiledTransformDescriptorBuilder(transform, sourceXsltFilePath))
+				? new(new DebuggerSupportingXslCompiledTransformDescriptorBuilder(transform, sourceXsltFilePath))
 				: base.LookupTransformDescriptor(transform);
 		}
 

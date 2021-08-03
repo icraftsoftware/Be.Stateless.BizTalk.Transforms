@@ -17,8 +17,10 @@
 #endregion
 
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Reflection;
 using System.Xml;
+using System.Xml.XPath;
 using Be.Stateless.BizTalk.Dummies.Transform;
 using Be.Stateless.BizTalk.Message;
 using Be.Stateless.BizTalk.Schema;
@@ -81,7 +83,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 				var result = setup.Validate();
 
 				result.NamespaceManager.AddNamespace("tns", SchemaMetadata.For<btf2_services_header>().TargetNamespace);
-				result.Select("//tns:sendBy").Should().HaveCount(2);
+				result.Select("//tns:sendBy").Cast<XPathNavigator>().Should().HaveCount(2);
 			}
 		}
 
@@ -138,7 +140,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 				var result = setup.Validate();
 
 				result.NamespaceManager.AddNamespace("tns", SchemaMetadata.For<btf2_services_header>().TargetNamespace);
-				result.Select("//*[1]/tns:unknown").Should().BeEmpty();
+				result.Select("//*[1]/tns:unknown").Cast<XmlNode>().Should().BeEmpty();
 			}
 		}
 

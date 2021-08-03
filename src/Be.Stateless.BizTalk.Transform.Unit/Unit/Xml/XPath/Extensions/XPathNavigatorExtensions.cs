@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -32,7 +32,7 @@ namespace Be.Stateless.BizTalk.Unit.Xml.XPath.Extensions
 		#region Mock's Factory Hook Point
 
 		internal static Func<XPathNavigator, ValuednessValidationCallback, ValuednessValidator> ValuednessValidatorFactory { get; set; }
-			= (navigator, callback) => new ValuednessValidator(navigator, callback);
+			= (navigator, callback) => new(navigator, callback);
 
 		#endregion
 

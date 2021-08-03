@@ -42,7 +42,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 			if (xmlOutputSetupConfigurator == null) throw new ArgumentNullException(nameof(xmlOutputSetupConfigurator));
 			XsltOutputStream = xsltOutputStream ?? throw new ArgumentNullException(nameof(xsltOutputStream));
 			ContentProcessing = XmlSchemaContentProcessing.Strict;
-			Schemas = new List<XmlSchema>();
+			Schemas = new();
 
 			xmlOutputSetupConfigurator(this);
 			ValidateSetup();
@@ -113,7 +113,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 		private void ValidateSetup()
 		{
 			using (var stringReader = new StringReader(new TTransform().XmlContent))
-			using (var xmlReader = XmlReader.Create(stringReader, new XmlReaderSettings { XmlResolver = null }))
+			using (var xmlReader = XmlReader.Create(stringReader, new() { XmlResolver = null }))
 			{
 				var navigator = new XPathDocument(xmlReader).CreateNavigator();
 				var output = navigator.SelectSingleNode("/xsl:stylesheet/xsl:output/@method", navigator.GetNamespaceManager().AddNamespaces<TTransform>());

@@ -39,7 +39,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 			{
 				var builder = new StringBuilder();
 				using (var writer = new StringWriter(builder))
-				using (var xmlWriter = XmlWriter.Create(writer, new XmlWriterSettings { Indent = true }))
+				using (var xmlWriter = XmlWriter.Create(writer, new() { Indent = true }))
 				{
 					MoveToRoot();
 					WriteSubtree(xmlWriter);

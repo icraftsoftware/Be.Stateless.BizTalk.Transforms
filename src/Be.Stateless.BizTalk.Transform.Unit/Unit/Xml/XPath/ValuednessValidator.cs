@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -78,7 +78,6 @@ namespace Be.Stateless.BizTalk.Unit.Xml.XPath
 			return path;
 		}
 
-		[SuppressMessage("Performance", "CA1822:Mark members as static")]
 		private int GetCurrentNodePosition(XPathNavigator navigator)
 		{
 			// return 0 if current node is the only one/child among its sibling with the same name, or its actual position otherwise

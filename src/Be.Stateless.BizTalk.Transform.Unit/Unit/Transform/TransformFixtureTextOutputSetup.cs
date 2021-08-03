@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2021 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@
 #endregion
 
 using System;
-using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Xml;
 using System.Xml.XPath;
@@ -50,11 +49,10 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 
 		private System.IO.Stream XsltOutputStream { get; }
 
-		[SuppressMessage("Performance", "CA1822:Mark members as static")]
 		private void ValidateSetup()
 		{
 			using (var stringReader = new StringReader(new TTransform().XmlContent))
-			using (var xmlReader = XmlReader.Create(stringReader, new XmlReaderSettings { XmlResolver = null }))
+			using (var xmlReader = XmlReader.Create(stringReader, new() { XmlResolver = null }))
 			{
 				var navigator = new XPathDocument(xmlReader).CreateNavigator();
 				var output = navigator.SelectSingleNode("/xsl:stylesheet/xsl:output/@method", navigator.GetNamespaceManager().AddNamespaces<TTransform>());

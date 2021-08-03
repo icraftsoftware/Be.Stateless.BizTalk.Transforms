@@ -37,7 +37,7 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 		internal TransformFixtureInputSetup(Action<ITransformFixtureInputSetup> inputSetupConfigurator)
 		{
 			if (inputSetupConfigurator == null) throw new ArgumentNullException(nameof(inputSetupConfigurator));
-			Messages = new List<System.IO.Stream>();
+			Messages = new();
 
 			inputSetupConfigurator(this);
 			ValidateSetup();
