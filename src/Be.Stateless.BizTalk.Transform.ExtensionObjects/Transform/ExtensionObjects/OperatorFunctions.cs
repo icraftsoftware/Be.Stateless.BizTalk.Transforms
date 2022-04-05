@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2021 François Chabot
+// Copyright © 2012 - 2022 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,15 +17,14 @@
 #endregion
 
 using System.Diagnostics.CodeAnalysis;
-using System.Xml.Xsl;
 
 namespace Be.Stateless.BizTalk.Transform.ExtensionObjects
 {
 	/// <summary>
-	/// XSLT extension object offering support for more concise logical operators, like an equivalent to the C# <c>?:</c> ternary
-	/// operator.
+	/// XSLT extension object offering support for more concise logical operators, like an equivalent to the C# <c>?:</c>
+	/// ternary operator.
 	/// </summary>
-	/// <seealso cref="XsltArgumentList.AddExtensionObject"/>
+	/// <seealso cref="System.Xml.Xsl.XsltArgumentList.AddExtensionObject"/>
 	[SuppressMessage("ReSharper", "UnusedType.Global", Justification = "XSLT Extension Object.")]
 	[SuppressMessage("ReSharper", "UnusedMember.Global", Justification = "XSLT Extension Object.")]
 	public class OperatorFunctions

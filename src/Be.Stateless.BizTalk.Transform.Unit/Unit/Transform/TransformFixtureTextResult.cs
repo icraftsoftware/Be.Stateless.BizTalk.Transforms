@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2020 François Chabot
+// Copyright © 2012 - 2022 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -22,9 +22,9 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 {
 	internal class TransformFixtureTextResult : ITransformFixtureTextResult
 	{
-		internal TransformFixtureTextResult(System.IO.Stream xsltResultReader)
+		internal TransformFixtureTextResult(System.IO.Stream xsltOutputStream)
 		{
-			using (var reader = new StreamReader(xsltResultReader))
+			using (var reader = new StreamReader(xsltOutputStream))
 			{
 				TextContent = reader.ReadToEnd();
 			}

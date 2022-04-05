@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2021 François Chabot
+// Copyright © 2012 - 2022 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -34,8 +34,8 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 {
 	public class TextTransformFixtureFixture : TransformFixture<TextTransform>
 	{
-		[Fact]
 		[SuppressMessage("ReSharper", "AccessToDisposedClosure")]
+		[Fact]
 		public void SetupTextTransform()
 		{
 			using (var stream = _document.AsStream())
@@ -46,12 +46,12 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 
 				var result = setup.Validate();
 
-				result.TextContent.Should().Be("services, deliveryReceiptRequest, sendTo, address, sendBy, commitmentReceiptRequest, sendTo, address, sendBy, ");
+				result.TextContent.Should().Be("services\rdeliveryReceiptRequest, sendTo, address\rsendBy\rcommitmentReceiptRequest\rsendTo, address\rsendBy\r");
 			}
 		}
 
-		[Fact]
 		[SuppressMessage("ReSharper", "AccessToDisposedClosure")]
+		[Fact]
 		public void SetupXmlTransformThrowsIfXsltOutputIsText()
 		{
 			using (var stream = _document.AsStream())
@@ -66,9 +66,6 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 		}
 
 		private readonly XmlDocument _document = MessageBodyFactory.Create<btf2_services_header>(
-			ResourceManager.Load(
-				Assembly.GetExecutingAssembly(),
-				"Be.Stateless.BizTalk.Resources.Message.Sample.xml",
-				s => s.ReadToEnd()));
+			ResourceManager.Load(Assembly.GetExecutingAssembly(), "Be.Stateless.BizTalk.Resources.Message.Sample.xml").ReadToEnd());
 	}
 }

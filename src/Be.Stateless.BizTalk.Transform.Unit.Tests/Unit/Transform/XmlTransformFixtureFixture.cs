@@ -1,6 +1,6 @@
 ﻿#region Copyright & License
 
-// Copyright © 2012 - 2021 François Chabot
+// Copyright © 2012 - 2022 François Chabot
 // 
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -244,9 +244,6 @@ namespace Be.Stateless.BizTalk.Unit.Transform
 		}
 
 		private readonly XmlDocument _document = MessageBodyFactory.Create<btf2_services_header>(
-			ResourceManager.Load(
-				Assembly.GetExecutingAssembly(),
-				"Be.Stateless.BizTalk.Resources.Message.Sample.xml",
-				s => s.ReadToEnd()));
+			ResourceManager.Load(Assembly.GetExecutingAssembly(), "Be.Stateless.BizTalk.Resources.Message.Sample.xml").ReadToEnd());
 	}
 }
